@@ -7,8 +7,9 @@
 namespace Chroma {
     class RPCServer {
     public:
+        RPCServer() : server(8080) {}
 
-        bool startServer(Server* server, int port);
+        bool startServer(Server* server);
 
     protected:
         rpc::server server;

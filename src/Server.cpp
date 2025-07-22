@@ -22,4 +22,15 @@ namespace Chroma {
                 break;
         }
     }
+
+    void Server::setLogging(bool logging) {
+        this->enableLogging = logging;
+        if (logging) {
+            server.set_logger([](const httplib::Request& req, const httplib::Response& res) {
+                log::info("Request: {}\nPath: {}\nBody: {}\nResponse: {}", req.method, req.path, req.body, res.body);
+            });
+        } else {
+            return;
+        }
+    }
 }
